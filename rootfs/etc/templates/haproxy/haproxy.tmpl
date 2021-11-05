@@ -591,6 +591,10 @@ backend {{ $backend.ID }}
 {{- end }}
 
 {{- /*------------------------------------*/}}
+{{- if and $backend.UseZipkin }}
+    filter opentracing id {{ $backend.ID }} config /etc/haproxy/{{ $backend.ID }}.cfg
+
+{{- /*------------------------------------*/}}
 {{- if $backend.TLS.HasTLSAuth }}
 {{- $needSSLACL := not $backend.HasSSLRedirect }}
     http-request set-header {{ $global.SSL.HeadersPrefix }}-Client-CN   %{+Q}[ssl_c_s_dn(cn)]{{ if $needSSLACL }}   if local-offload{{ end }}
@@ -1255,6 +1259,11 @@ frontend {{ $proxy__front_https }}
 {{- else }}
     option httplog
 {{- end }}
+{{- end }}
+
+{{- /*------------------------------------*/}}
+{{- if $global.UseZipkin }}
+    filter opentracing id ot-fe config /etc/haproxy/ot-fe.cfg
 {{- end }}
 
 {{- /*------------------------------------*/}}

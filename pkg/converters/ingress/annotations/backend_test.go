@@ -2307,7 +2307,6 @@ WARN skipping CA on service 'default/app1': secret not found: 'default/ca'`,
 		c := setup(t)
 		d := c.createBackendMappingData("default/app", &test.source, test.annDefault, test.ann, test.paths)
 		c.haproxy.Global().UseHTX = test.useHTX
-		c.haproxy.Global().UseZipkin = test.useOT
 		c.cache.SecretTLSPath = test.tlsSecrets
 		c.cache.SecretCAPath = test.caSecrets
 		c.createUpdater().buildBackendProtocol(d)

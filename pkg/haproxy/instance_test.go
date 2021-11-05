@@ -4583,7 +4583,6 @@ func (c *testConfig) configGlobal(global *hatypes.Global) {
 	global.Timeout.Stop = "15m"
 	global.Timeout.Tunnel = "1h"
 	global.UseHTX = true
-	global.UseZipkin = true
 }
 
 var endpointS0 = &hatypes.Endpoint{

@@ -113,7 +113,6 @@ func createDefaults() map[string]string {
 		types.GlobalUseCPUMap:                  "true",
 		types.GlobalUseForwardedProto:          "true",
 		types.GlobalUseHTX:                     "true",
-		types.GlobalUseZipkin:                  "false",
 		types.GlobalDefaultBackendRedirectCode: "302",
 	}
 }
