@@ -46,6 +46,7 @@
 
     ot-scope backend_http_request
         span "Backend HTTP request" follows-from "Backend TCP request"
+            inject use-headers
         finish "Backend TCP request"
         event on-backend-http-request
 
