@@ -77,6 +77,7 @@ type Global struct {
 	TimeoutStopDuration     time.Duration
 	StrictHost              bool
 	UseHTX                  bool
+	UseZipkin               bool
 	DefaultBackendRedir     string
 	DefaultBackendRedirCode int
 	CustomConfig            []string

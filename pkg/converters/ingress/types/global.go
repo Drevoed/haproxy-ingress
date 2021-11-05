@@ -109,6 +109,7 @@ const (
 	GlobalUseForwardedProto            = "use-forwarded-proto"
 	GlobalUseHAProxyUser               = "use-haproxy-user"
 	GlobalUseHTX                       = "use-htx"
+	GlobalUseZipkin                    = "use-zipkin"
 	GlobalUseProxyProtocol             = "use-proxy-protocol"
 	GlobalWorkerMaxReloads             = "worker-max-reloads"
 )

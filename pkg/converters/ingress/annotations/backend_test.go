@@ -1991,6 +1991,7 @@ func TestBackendProtocol(t *testing.T) {
 	testCase := []struct {
 		source     Source
 		useHTX     bool
+		useOT      bool
 		annDefault map[string]string
 		ann        map[string]map[string]string
 		paths      []string
@@ -2304,8 +2305,9 @@ WARN skipping CA on service 'default/app1': secret not found: 'default/ca'`,
 	}
 	for i, test := range testCase {
 		c := setup(t)
-		d := c.createBackendMappingData("defualt/app", &test.source, test.annDefault, test.ann, test.paths)
+		d := c.createBackendMappingData("default/app", &test.source, test.annDefault, test.ann, test.paths)
 		c.haproxy.Global().UseHTX = test.useHTX
+		c.haproxy.Global().UseZipkin = test.useOT
 		c.cache.SecretTLSPath = test.tlsSecrets
 		c.cache.SecretCAPath = test.caSecrets
 		c.createUpdater().buildBackendProtocol(d)
