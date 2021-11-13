@@ -589,11 +589,6 @@ backend {{ $backend.ID }}
 {{- range $header := $backend.Headers }}
     http-request set-header {{ $header.Name }} {{ $header.Value }}
 {{- end }}
-
-{{- /*------------------------------------*/}}
-{{- if and $backend.UseZipkin }}
-    filter opentracing id {{ $backend.ID }} config /etc/haproxy/{{ $backend.ID }}.cfg
-
 {{- /*------------------------------------*/}}
 {{- if $backend.TLS.HasTLSAuth }}
 {{- $needSSLACL := not $backend.HasSSLRedirect }}
